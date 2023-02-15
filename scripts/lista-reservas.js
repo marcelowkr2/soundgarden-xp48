@@ -3,18 +3,18 @@ const eventTitle = document.querySelector("#event-title");
 const bookingList = document.querySelector('#tabela-eventos');
 const loading = document.querySelector('#loading');
 
-const BASE_URL = 'https://xp41-soundgarden-api.herokuapp.com';
+const API_URL = 'https://soundgarden-api.vercel.app//bookings';
 const ID_ATUAL = window.location.search.split("=");
 
 loading.style.display = "block"; //Loading Gif
 
 body.onload = async () => {
     try {
-        const responseEvents = await fetch(`${BASE_URL}/events/${ID_ATUAL[1]}`, { method: "GET" });
+        const responseEvents = await fetch(`${API_URL}/events/${ID_ATUAL[1]}`, { method: "GET" });
         const contentResponseEvents = await responseEvents.json();
         eventTitle.insertAdjacentHTML("afterbegin", contentResponseEvents.name);
         
-        const responseBookings = await fetch(`${BASE_URL}/bookings/event/${ID_ATUAL[1]}`, { method: "GET" });
+        const responseBookings = await fetch(`${API_URL}/bookings/event/${ID_ATUAL[1]}`, { method: "GET" });
         const contentResponseBookings = await responseBookings.json();
         loading.style.display = "none";
 
