@@ -73,5 +73,18 @@ Accesso: https://marcelowkr2.github.io/soundgarden-xp48/
 				</sub>
 			</a>
 		</td>
+        <td align="center">
+			<a href="https://github.com/bnvsureck">
+				<img
+					width="100px"
+					height="auto"
+					src="https://avatars.githubusercontent.com/u/91431294?v=4"
+				/>
+				<br />
+				<sub>
+					<b>Bruno Nathan</b>
+				</sub>
+			</a>
+		</td>
    
 </table>
