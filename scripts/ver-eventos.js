@@ -13,7 +13,7 @@ const formNewEvent = document.querySelector('form');
 const modalContainer = document.querySelector('.modal-container');
 const modal = document.querySelector('.my-modal');
 
-const BASE_URL = 'https://xp41-soundgarden-api.herokuapp.com';
+const BASE_URL = 'https://soundgarden-api.vercel.app/events';
 
 formNewEvent.onsubmit = async event => {
     event.preventDefault();

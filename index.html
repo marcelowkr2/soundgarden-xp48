@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,9 @@
     <title>Sound Garden</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/slider.css">
+    <script src="./scripts/slider.js"></script>
 </head>
 
 <body>
@@ -16,10 +18,47 @@
         <img src="img/Sound-logo (1).png" width="300" alt="">
     </header>
     <main>
-        <section class="full d-flex justify-content-center align-items-center"
-            style="background-color: #F8BBD0; color: #fff">
-            <div class="text-center">
-                <h1>Adicione um banner maneiro aqui</h1>
+        <section id="carrossel" class=" d-flex justify-content-center align-items-center" style="background-color: #F8BBD0; color: #fff">
+            <div class="slider">
+
+                <div class="slides">
+                    <input type="radio" name="radio-btn" id="radio1">
+                    <input type="radio" name="radio-btn" id="radio2">
+                    <input type="radio" name="radio-btn" id="radio3">
+                    <input type="radio" name="radio-btn" id="radio4">
+
+                    <div class="slide first">
+                        <img src="./img/banner1.png" alt="imagem1
+                        ">
+                    </div>
+                    <div class="slide ">
+                        <img src="./img/banner3.png" alt="imagem2
+                        ">
+                    </div>
+                    <div class="slide ">
+                        <img src="./img/banner4.png" alt="imagem3
+                        ">
+                    </div>
+                    <div class="slide ">
+                        <img src="./img/banner5.png" alt="imagem4
+                        ">
+                    </div>
+
+                    <div class="navigation-auto">
+                        <div class="auto-btn1"></div>
+                        <div class="auto-btn2"></div>
+                        <div class="auto-btn3"></div>
+                        <div class="auto-btn4"></div>
+
+                    </div>
+
+                </div>
+                <div class="manual-navigation">
+                    <label for="radio1" class="manual-btn"></label>
+                    <label for="radio2" class="manual-btn"></label>
+                    <label for="radio3" class="manual-btn"></label>
+                    <label for="radio4" class="manual-btn"></label>
+                </div>
             </div>
         </section>
         <section class="full">

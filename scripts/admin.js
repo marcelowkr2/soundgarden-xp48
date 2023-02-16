@@ -2,7 +2,7 @@ const body = document.querySelector('body');
 const tbody = document.querySelector('#tabela-eventos');
 const loading = document.querySelector('#loading');
 
-const API_URL = 'https://soundgarden-api.vercel.app//events';
+const API_URL = 'https://soundgarden-api.vercel.app/events';
 
 loading.style.display = "block";
 

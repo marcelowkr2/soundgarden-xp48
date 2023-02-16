@@ -3,7 +3,7 @@ const eventTitle = document.querySelector("#event-title");
 const bookingList = document.querySelector('#tabela-eventos');
 const loading = document.querySelector('#loading');
 
-const API_URL = 'https://soundgarden-api.vercel.app//bookings';
+const API_URL = 'https://soundgarden-api.vercel.app/bookings';
 const ID_ATUAL = window.location.search.split("=");
 
 loading.style.display = "block"; //Loading Gif
