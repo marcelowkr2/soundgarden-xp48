@@ -59,12 +59,7 @@ Accesso: https://marcelowkr2.github.io/soundgarden-xp48/
 				</sub>
 			</a>
 		</td>
-   
-</table>
-
-<table>
-	<tr>
-		<td align="right">
+		<td align="center">
 			<a href="https://github.com/paulorocha11">
 				<img
 					width="100px"
