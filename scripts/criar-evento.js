@@ -1,22 +1,44 @@
-const inputTags = document.querySelectorAll('input');
-inputTags.forEach(input => {
-    input.setAttribute('required', '');
-});
+const BASE_URL = "https://soundgarden-api.vercel.app/events";
+const inputNome = document.querySelector("#nome");
+const inputBanner = document.querySelector("#banner");
+const inputAtracoes = document.querySelector("#atracoes");
+const inputDescricao = document.querySelector("#descricao");
+const inputData = document.querySelector("#data");
+const inputLotacao = document.querySelector("#lotacao");
+const form = document.querySelector("#new-event");
 
-const nameEvent = document.querySelector('#nome');
-const bannerEvent = document.querySelector('#banner');
-const artistsEvent = document.querySelector('#atracoes');
-const descriptionEvent = document.querySelector('#descricao');
-const dateEvent = document.querySelector('#data');
-const ticketsEvent = document.querySelector('#lotacao');
-const formNewEvent = document.querySelector('form');
-const modalContainer = document.querySelector('.modal-container');
-const modal = document.querySelector('.my-modal');
+form.onsubmit = async (evento) => {
+  evento.preventDefault();
 
-const API_URL = 'https://soundgarden-api.vercel.app/events';
+  const novoEvento = {
+    name: inputNome.value,
+    poster: inputBanner.value,
+    attractions: inputAtracoes.value.split(","),
+    description: inputDescricao.value,
+    scheduled: inputData.value.slice(0, 16),
+    number_tickets: inputLotacao.value,
+  };
 
-formNewEvent.onsubmit = async event => {
-    event.preventDefault();
+  const options = {
+    method: "POST",
+    body: JSON.stringify(novoEvento),
+    headers: { "Content-Type": "application/json" },
+    redirect: "follow",
+  };
 
-    
+  const resposta = await fetch(`${BASE_URL}/events`, options);
+  const conteudoResposta = await resposta.json();
+  console.log(conteudoResposta);
+
+  if (resposta.status == 201) {
+    alert("Evento cadastrado com sucesso!");
+    window.location.href = "admin.html";
+
+    inputNome.value = "";
+    inputBanner.value = "";
+    inputAtracoes.value = "";
+    inputDescricao.value = "";
+    inputData.value = "";
+    inputLotacao.value = "";
+  }
 };

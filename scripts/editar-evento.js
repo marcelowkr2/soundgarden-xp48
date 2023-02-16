@@ -11,7 +11,7 @@ const modalContainer = document.querySelector('.modal-container');
 const modal = document.querySelector('.my-modal');
 const loading = document.querySelector('#loading');
 
-const API_URL = 'https://soundgarden-api.vercel.app/events/623bc253d2891ac70ab1cce4';
+const API_URL = 'https://soundgarden-api.vercel.app/events';
 const ID_ATUAL = window.location.search.split("=");
 
 loading.style.display = "block"; //Loading Gif
