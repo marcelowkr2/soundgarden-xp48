@@ -1,44 +1,41 @@
-const BASE_URL = "https://soundgarden-api.vercel.app/events";
-const inputNome = document.querySelector("#nome");
-const inputBanner = document.querySelector("#banner");
-const inputAtracoes = document.querySelector("#atracoes");
-const inputDescricao = document.querySelector("#descricao");
-const inputData = document.querySelector("#data");
-const inputLotacao = document.querySelector("#lotacao");
-const form = document.querySelector("#new-event");
+const url = "https://soundgarden-api.vercel.app/events"
 
-form.onsubmit = async (evento) => {
-  evento.preventDefault();
+const formCadastroEvento = document.getElementById("cadastro-evento");
 
-  const novoEvento = {
-    name: inputNome.value,
-    poster: inputBanner.value,
-    attractions: inputAtracoes.value.split(","),
-    description: inputDescricao.value,
-    scheduled: inputData.value.slice(0, 16),
-    number_tickets: inputLotacao.value,
-  };
+formCadastroEvento.addEventListener('submit', async (event) =>{
+    event.preventDefault(); 
 
-  const options = {
+const inputNome = document.getElementById("nome");
+const inputAtracoes = document.getElementById("atracoes");
+const inputDescricao = document.getElementById("descricao");
+const inputData = document.getElementById("data");
+const inputLotacao = document.getElementById("lotacao");
+const inputBanner = document.getElementById("banner");
+
+const novoEventoObj = {
+    "name": inputNome.value,
+    "poster": inputBanner.value,
+    "attractions": inputAtracoes.value.split(","),
+    "description": inputDescricao.value,
+    "scheduled": inputData.value,
+    "number_tickets": inputLotacao.value
+}
+
+console.log(novoEventoObj);
+
+const novoEventoJSON = JSON.stringify(novoEventoObj);
+
+const response = fetch(url, {
     method: "POST",
-    body: JSON.stringify(novoEvento),
-    headers: { "Content-Type": "application/json" },
-    redirect: "follow",
-  };
-
-  const resposta = await fetch(`${BASE_URL}/events`, options);
-  const conteudoResposta = await resposta.json();
-  console.log(conteudoResposta);
-
-  if (resposta.status == 201) {
-    alert("Evento cadastrado com sucesso!");
-    window.location.href = "admin.html";
-
-    inputNome.value = "";
-    inputBanner.value = "";
-    inputAtracoes.value = "";
-    inputDescricao.value = "";
-    inputData.value = "";
-    inputLotacao.value = "";
-  }
-};
+    mode: "cors",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: novoEventoJSON
+}).then( response => console.log(response)
+).then( ()=> {
+    alert("Evento criado com sucesso!")
+    window.location.replace("admin.html");
+    }
+).catch( error => console.error(error) );
+});

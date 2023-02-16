@@ -1,43 +1,51 @@
-const inputTags = document.querySelectorAll('input');
-inputTags.forEach(input => {
-    input.setAttribute('required', '');
-});
+const url = "https://soundgarden-api.vercel.app/bookings";
 
-const nameEvent = document.querySelector('#nome');
-const bannerEvent = document.querySelector('#banner');
-const artistsEvent = document.querySelector('#atracoes');
-const descriptionEvent = document.querySelector('#descricao');
-const dateEvent = document.querySelector('#data');
-const ticketsEvent = document.querySelector('#lotacao');
-const formDelete = document.querySelector('form');
-const body = document.querySelector('body');
-const modalContainer = document.querySelector('.modal-container');
-const modal = document.querySelector('.my-modal');
-const loading = document.querySelector('#loading');
+const inputNome = document.querySelector("#nome");
+const inputBanner = document.querySelector("#banner");
+const inputAtracoes = document.querySelector("#atracoes");
+const inputDescricao = document.querySelector("#descricao");
+const inputData = document.querySelector("#data");
+const inputLotacao = document.querySelector("#lotacao");
+const formulario = document.querySelector("form");
 
-const API_URL = 'https://soundgarden-api.vercel.app//bookings/:id';
-const ID_ATUAL = window.location.search.split("=");
+const id = new URLSearchParams(window.location.search).get("id");
 
-formDelete.onsubmit = async event => {
-    event.preventDefault();
-    alert('Are you sure?');
+async function todosEventos() {
+  const response = await fetch(`${url}/events/${id}`, {
+    method: "GET",
+    redirect: "follow",
+    headers: { 
+        "Content-Type": "application/json" 
+    },
+  });
 
-    try {
-        modal.insertAdjacentHTML("afterbegin", myModal);
-        modalContainer.classList.add('show');
-        
-        const loadingModal = document.querySelector('#loadingModal');
-        loadingModal.style.display = "block";
+  const eventos = await response.json();
 
-        const responseEvent = await fetch(`${API_URL}/events/${ID_ATUAL[1]}`, { method: "DELETE" });
-        modalContainer.classList.remove('show');
-        
-        alert('Success');
-        window.location.href="admin.html";
+  inputNome.value = eventos.name;
+  inputBanner.value = eventos.poster;
+  inputAtracoes.value = eventos.attractions;
+  inputDescricao.value = eventos.description;
+  inputData.value = eventos.scheduled;
+  inputLotacao.value = eventos.number_tickets;
 
-    } catch (error) {
-        console.log(error);
-        modalContainer.classList.remove('show');
-        alert('Error!!!');
-    }
+}
+
+todosEventos();
+
+formulario.onsubmit = async (evento) => {
+  evento.preventDefault();
+
+  const response = await fetch(`${url}/events/${id}`, {
+    method: "DELETE",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    redirect: "follow",
+  })
+  .then(() => {
+    alert("Evento excluído com sucesso");
+    window.location.replace("admin.html");
+  })
+  .catch((error) => console.log(error.message));
+
 };
