@@ -1,37 +1,39 @@
-const body = document.querySelector('body');
-const eventTitle = document.querySelector("#event-title");
-const bookingList = document.querySelector('#tabela-eventos');
-const loading = document.querySelector('#loading');
+const API_URL = "https://soundgarden-api.vercel.app/bookings";
 
-const API_URL = 'https://soundgarden-api.vercel.app/bookings';
-const ID_ATUAL = window.location.search.split("=");
+const buscaParametro = () => {
 
-loading.style.display = "block"; //Loading Gif
+    const url = new URL(window.location.href);
 
-body.onload = async () => {
-    try {
-        const responseEvents = await fetch(`${API_URL}/events/${ID_ATUAL[1]}`, { method: "GET" });
-        const contentResponseEvents = await responseEvents.json();
-        eventTitle.insertAdjacentHTML("afterbegin", contentResponseEvents.name);
+    const id = url.searchParams.get('id');
+
+    return id;
+}
+console.log(buscaParametro())
+
+const listarReserva = async () => {
+    const eventos = await fetch(API_URL + "/event/" + buscaParametro(), {
+        method: "GET",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then((resposta) => {
         
-        const responseBookings = await fetch(`${API_URL}/bookings/event/${ID_ATUAL[1]}`, { method: "GET" });
-        const contentResponseBookings = await responseBookings.json();
-        loading.style.display = "none";
-
-        contentResponseBookings.forEach((element, index) => {
-            bookingList.insertAdjacentHTML("beforeend", `
-                <tr>
-                    <th scope="row">${index + 1}</th>
-                    <td>${element.owner_name}</td>
-                    <td>${element.owner_email}</td>
-                    <td>${element.number_tickets}</td>
-                </tr>
-            `);
-        });
-
-    } catch (error) {
-        console.log(error);
-        loading.style.display = "none";
-        alert('Error!!!');
-    };
-};
+        return resposta.json();
+    });
+    
+    const tbody = document.querySelector('.listar-reserva tbody');
+    let htmlEventos = "";
+    eventos.forEach(evento => {
+        htmlEventos += `
+            <tr>
+                <th scope="row">#</th>
+                <td>${evento.owner_name}</td>
+                <td>${evento.owner_email}</td>
+                <td>${evento.number_tickets}</td>
+              </tr>
+        `;
+    });
+    tbody.innerHTML = htmlEventos;
+}
+listarReserva();

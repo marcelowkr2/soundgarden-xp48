@@ -1,4 +1,4 @@
-const url = "https://soundgarden-api.vercel.app/bookings";
+const url = "https://soundgarden-api.vercel.app/events";
 
 const inputNome = document.querySelector("#nome");
 const inputBanner = document.querySelector("#banner");

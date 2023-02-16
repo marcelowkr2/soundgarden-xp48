@@ -1,25 +1,60 @@
-const nameEvent = document.querySelector('#nome');
-const bannerEvent = document.querySelector('#banner');
-const artistsEvent = document.querySelector('#atracoes');
-const descriptionEvent = document.querySelector('#descricao');
-const dateEvent = document.querySelector('#data');
-const ticketsEvent = document.querySelector('#lotacao');
-const formEdit = document.querySelector('form');
-const body = document.querySelector('body');
-const inputTags = document.querySelectorAll('input');
-const modalContainer = document.querySelector('.modal-container');
-const modal = document.querySelector('.my-modal');
-const loading = document.querySelector('#loading');
+const url = "https://soundgarden-api.vercel.app/events";
 
-const API_URL = 'https://soundgarden-api.vercel.app/events';
-const ID_ATUAL = window.location.search.split("=");
+const inputNome = document.querySelector("#nome");
+const inputBanner = document.querySelector("#banner");
+const inputAtracoes = document.querySelector("#atracoes");
+const inputDescricao = document.querySelector("#descricao");
+const inputData = document.querySelector("#data");
+const inputLotacao = document.querySelector("#lotacao");
+const formulario = document.querySelector("form");
 
-loading.style.display = "block"; //Loading Gif
+const id = new URLSearchParams(window.location.search).get("id");
 
-body.onload = getDataEvent(); //services.js
+async function todosEventos() {
+  const response = await fetch(`${url}/events/${id}`, {
+    method: "GET",
+    redirect: "follow",
+    headers: { 
+        "Content-Type": "application/json" 
+    },
+  });
 
-formEdit.onsubmit = async event => {
-    event.preventDefault();
+  const eventos = await response.json();
 
-    sendDataEvents('PUT', `/events/${ID_ATUAL[1]}`);
-};
+  inputNome.value = eventos.name;
+  inputBanner.value = eventos.poster;
+  inputAtracoes.value = eventos.attractions;
+  inputDescricao.value = eventos.description;
+  inputData.value = eventos.scheduled;
+  inputLotacao.value = eventos.number_tickets;
+
+}
+
+todosEventos();
+
+formulario.onsubmit = async (evento) => {
+    evento.preventDefault();
+
+    const editarEvento = {
+        name: inputNome.value,
+        poster: inputBanner.value,
+        attractions: inputAtracoes.value.split(","),
+        description: inputDescricao.value,
+        scheduled: inputData.value,
+        number_tickets: inputLotacao.value,
+      };
+  
+    const response = await fetch(`${url}/events/${id}`, {
+      method: "PUT",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      redirect: "follow",
+      body: JSON.stringify(editarEvento),
+    })
+    .then(() => {
+        alert("Evento atualizado com sucesso");
+        window.location.replace("admin.html");
+      })
+      .catch((error) => console.log(error.message));
+  };
