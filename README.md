@@ -1,5 +1,5 @@
-# Website Sound Garden :musical_note:
-<p><img alt="logo" height="64" src="./img/Sound-logo (1).png"></p>
+# Website Sound Garden
+<p align="center"><img alt="logo" height="64" src="./img/Sound-logo (1).png"></p>
 
 <hr>
 
@@ -14,7 +14,7 @@
 
 ## 📋 Informação
 
-<p align="left"> A Sound Garden... </p>
+<p align="left"> A Sound Garden </p>
 
 <br>
 
@@ -59,5 +59,24 @@ Accesso: https://marcelowkr2.github.io/soundgarden-xp48/
 				</sub>
 			</a>
 		</td>
-        
+   
+</table>
+
+<table>
+	<tr>
+		<td align="center">
+			<a href="https://github.com/paulorocha11">
+				<img
+					width="100px"
+					height="auto"
+					src="https://avatars.githubusercontent.com/u/122940939?v=4"
+					alt="Paulo Rocha"
+				/>
+				<br />
+				<sub>
+					<b>Paulo Rocha</b>
+				</sub>
+			</a>
+		</td>
+   
 </table>
