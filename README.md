@@ -4,17 +4,17 @@
 <hr>
 
 ## 📕 Index
-- [📋 Informação](#Informaçãot)
+- [📋 Informação](#Informação)
 - [:computer: Preview](#preview)
-- [:cool: Website Features](#website--features)
-- [🖥 Technologies](#technologies)
-- [📝 Authors](#authors) 
+- [:cool: Recursos do Site](#recursos-site)
+- [🖥 Tecnologias](#tecnologias)
+- [📝 Autores](#autores) 
 
 <br>
 
 ## 📋 Informação
 
-<p align="left">  A concert hall called Sound Garden will open and needs a website that displays the events and allows customers to book tickets through the Landing Page. </p>
+<p align="left"> A Sound Garden... </p>
 
 <br>
 
