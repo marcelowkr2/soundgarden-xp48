@@ -15,7 +15,7 @@ const modalContainer = document.querySelector('.modal-container');
 const modal = document.querySelector('.my-modal');
 const loading = document.querySelector('#loading');
 
-const API_URL = 'https://soundgarden-api.vercel.app/events';
+const API_URL = 'https://soundgarden-api.vercel.app//bookings/:id';
 const ID_ATUAL = window.location.search.split("=");
 
 formDelete.onsubmit = async event => {
