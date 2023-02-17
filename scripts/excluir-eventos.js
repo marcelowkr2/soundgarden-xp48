@@ -1,4 +1,4 @@
-const url = "https://soundgarden-api.vercel.app/events";
+const API_URL = "https://soundgarden-api.vercel.app/events";
 
 const inputNome = document.querySelector("#nome");
 const inputBanner = document.querySelector("#banner");
@@ -8,10 +8,10 @@ const inputData = document.querySelector("#data");
 const inputLotacao = document.querySelector("#lotacao");
 const formulario = document.querySelector("form");
 
-const id = new URLSearchParams(window.location.search).get("id");
+const id = new API_URLSearchParams(window.location.search).get("id");
 
 async function todosEventos() {
-  const response = await fetch(`${url}/events/${id}`, {
+  const response = await fetch(`${API_URL}/events/${id}`, {
     method: "GET",
     redirect: "follow",
     headers: { 
@@ -35,7 +35,7 @@ todosEventos();
 formulario.onsubmit = async (evento) => {
   evento.preventDefault();
 
-  const response = await fetch(`${url}/events/${id}`, {
+  const response = await fetch(`${API_URL}/events/${id}`, {
     method: "DELETE",
     headers: {
         "Content-Type": "application/json"
