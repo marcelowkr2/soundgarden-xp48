@@ -12,7 +12,7 @@
 
 <br>
 
-Desenvolver um site para uma empresa de evento chamada Sound Garden, onde no site se possa cadastrar eventos, editar e excluir, fazer reservas de ingreço também.
+Desenvolver um site para uma empresa de evento chamada Sound Garden, onde no site se possa cadastrar eventos, editar e excluir, fazer reservas de ingresso também.
 
 <br>
 
