@@ -96,8 +96,10 @@ Projeto desenvolvido por:
           <b>Paulo Henrique</b>
         </sub>
       </a>
+      </td>
   </tr>
-
+  
+<tr>
   <td align="center">
       <a href="https://www.linkedin.com/in/">
         <img src="https://avatars.githubusercontent.com/u/91431294?v=4" width="100px;" alt=""/><br>
