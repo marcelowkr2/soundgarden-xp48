@@ -89,24 +89,6 @@ Projeto desenvolvido por:
         </sub>
       </a>
     </td>
-    <td align="center">
-      <a href="https://www.linkedin.com/in//">
-        <img src="https://avatars.githubusercontent.com/u/122940939?v=4" width="100px;" alt=""/><br>
-        <sub>
-          <b>Paulo Henrique</b>
-        </sub>
-      </a>
-      </td>
-
-  <td align="center">
-      <a href="https://www.linkedin.com/in/">
-        <img src="https://avatars.githubusercontent.com/u/91431294?v=4" width="100px;" alt=""/><br>
-        <sub>
-          <b>Bruno Nathan</b>
-        </sub>
-      </a>
-  </tr>
+    </tr>
 </table>
-
-<br><br>
 
